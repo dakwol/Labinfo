@@ -1,6 +1,4 @@
 #include <iostream>
-#include <time.h>
-#include <iomanip>
 #include <ctime>
 using namespace std;
 
@@ -11,9 +9,9 @@ int i,j;
 
 int M ;
 int** array;
-cout << " Введите количество строк: ";//ввод размеров матрицы
+cout << "Введите количество строк: ";//ввод размеров матрицы
 cin >> M;
-cout << " Введите количество столбцов: ";
+cout << "Введите количество столбцов: ";
 cin >> N;
 
 array = new int*[M];
@@ -30,6 +28,7 @@ array = new int*[M];
      cout << endl;
     }
 
+cout << "Введённый массив:\n";
 for ( i = 0; i < M; i++) //вывод на экран матрицы после заполнения(первоначальный вид)
     {
      for ( j = 0; j < N; j++)
@@ -52,7 +51,7 @@ for ( i = 0; i < M; i++) //вывод на экран матрицы после 
               else if (array[i][j]==min) array[i][j]=max;
             }
        }
-cout << "\nРезультирующий массив :\n";
+cout << "\nРезультирующий массив:\n";
 for(i = 0; i<M; i++)
     {
      for(j = 0; j<N; j++)
