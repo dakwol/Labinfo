@@ -11,16 +11,16 @@ int i,j;
 
 int M ;
 int** array;
-cout << "Введите количество строк: ";//ввод размеров матрицы
+cout << " Введите количество строк: ";//ввод размеров матрицы
 cin >> M;
-cout << "Введите количество столбцов: ";
+cout << " Введите количество столбцов: ";
 cin >> N;
 
 array = new int*[M];
     for ( i = 0; i < M; i++)
     array[i] = new int[N];
 
-    for ( i = 0; i < M; i++) // ввод значений матрицы
+    for ( i = 0; i < M; i++) // ввод эллементов матрицы
     {
       for ( j = 0; j < N; j++)
         {
@@ -30,7 +30,7 @@ array = new int*[M];
      cout << endl;
     }
 
-for ( i = 0; i < M; i++) //вывод матрицы на экран
+for ( i = 0; i < M; i++) //вывод на экран матрицы после заполнения(первоначальный вид)
     {
      for ( j = 0; j < N; j++)
         {
@@ -46,7 +46,7 @@ for ( i = 0; i < M; i++) //вывод матрицы на экран
               if (j==0 || array[i][j]>max) max=array[i][j];
               if (j==0 || array[i][j]<min) min=array[i][j];
             }
-         for (int j = 0; j < N; j++)
+         for (int j = 0; j < N; j++)//Перестановка элеменов местами
             {
               if (array[i][j]==max) array[i][j]=min;
               else if (array[i][j]==min) array[i][j]=max;
