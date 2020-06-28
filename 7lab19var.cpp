@@ -13,7 +13,7 @@ int Me(int A[][N])
 int file(int A[][N])
     {
         int i, j; FILE* f;
-        f = fopen("in.txt", "r");
+        f = fopen("in", "r");
         if (f != NULL)
             for (j = 0; j<N; j++)
                 for (i = 0; i<N; i++)
@@ -41,7 +41,7 @@ int output(int A[][N], int X[])
             for (int i = 0; i< N; i++)
             printf("\nx[%d]=%d", i+1, X[i]);
             printf("\nY = %d", rec(X, 0));
-            f = fopen("out.txt", "w");
+            f = fopen("out", "w");
             if (f != NULL)
                 {
                     for (int i = 0; i< N; i++)
@@ -56,43 +56,43 @@ int output(int A[][N], int X[])
                 }
             else printf("Ошибка открытия файла");
     }
-int *MainCalculation(int A[][5],int (*yka)(int[][N] ),int X[])//не работает
-{
-int min,j,i;(*yka)(A);
-int Check=false;int AX[5];
-	// Поиск минимального элемента
-	min=A[0][0];
-	for (i = 0; i < 5; i++)
-	{
-		for (j = 0; j < 5; j++)
-		{
-			if (A[i][j]<min)
-			{
-				min=A[i][j];
-			}
-		}
-	}
-	// Анализ строк на равенство ее элементов минимальному элементу матрицы
-	for (i = 0; i < 5; i++)
-	{
-		for (j = 0; j < 5; j++)
-		{
-			if (A[i][j]==min)
-			{
-				Check=true;
-			}
-		}
-		if (Check)
-		{
-			AX[i]=1;
-		}
-		else
-		{
-			AX[i]=-1;
-		}
-		Check=false;
-	}
-}
+int *MainCalculation(int A[][5],int (*yka)(int[][N] ),int X[])
+    {
+        int min,Check=false;
+        int j,i,t; (*yka)(A);
+        // Поиск минимального элемента
+	    min=A[0][0];
+        for(i=0;i<N;i++)
+            {
+                for(j=0;j<N;j++)
+                {
+			       if (A[i][j]<min)
+			         {
+			        	min=A[i][j];
+			         }
+		        }
+            }
+            printf("минимальный эл.%d\n",min);
+            for (i = 0; i < 5; i++)
+               {
+                    for (j = 0; j < 5; j++)
+                       {
+                          if (A[i][j]==min)
+                          {
+                            Check=true;
+                          }
+                       }
+                    if (Check)
+                    {
+                      X[i]=1;
+                    }
+                   else
+                    {
+                      X[i]=-1;
+                    }
+                  Check=false;
+               }
+    }
 int main()
     {
         char* locale = setlocale(LC_ALL,"");
