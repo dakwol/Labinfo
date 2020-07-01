@@ -22,14 +22,17 @@ int file(int A[][N])//функция чтения матрицы из файла
    else printf("Входной файл отсутствует");
    fclose(f);//закрытие файла
 }
-int rec(int Y,int X[], int stepi)//определяем Y
+int rec(int Y,int p,int A[][N], int stepi)//определяем Y
 {
-    if (stepi< 4)
-      if (X[stepi] % 2 != 0)
-        {
-          Y*= X[stepi] ; rec(Y,X, stepi + 1);
-        }
-      else return Y;
+    if (stepi < 4)
+    {
+      if (A[0][stepi] % 2 != 0)p++;
+          if(p!=0 && A[0][stepi] % 2 == 0)
+          {
+            Y+= A[0][stepi] ; rec(Y,p,A, stepi + 1);
+          }
+      else rec(Y,p,A, stepi + 1);
+    }
     else return Y;
 }
 int output(int A[][N], int X[])//функция вывода матрицы на экран и в файл(вместе с X и Y)
@@ -43,7 +46,7 @@ int output(int A[][N], int X[])//функция вывода матрицы на
     }
    for (int i = 0; i< N; i++)//вывод X и Y на экран
    printf("\nx[%d]=%d", i+1, X[i]);
-   printf("\nY = %d", rec(1,X, 0));
+   printf("\nY = %d", rec(0,0,A, 0));
    f = fopen("out.txt", "w");//открытие файла для записи
    if (f != NULL)//Проверка открытия файла
     {
@@ -55,7 +58,7 @@ int output(int A[][N], int X[])//функция вывода матрицы на
        }
        for (int i = 0; i < N; i++)//запись в файл X и Y
            fprintf(f, "\nx[%d]=%d", i+1, X[i]);
-           fprintf(f, "\nY = %d", rec(1,X, 0));
+           fprintf(f, "\nY = %d", rec(0,0,A, 0));
     }
     else printf("Ошибка открытия файла");
 }
